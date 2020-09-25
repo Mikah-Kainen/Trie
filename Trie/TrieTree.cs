@@ -29,11 +29,11 @@ namespace Trie
             }
             else if(currentNode.Children != new Dictionary<char, TrieNode>() && currentNode.Children.ContainsKey(newWord[currentIndex]))
             {
-                return Add(newWord, currentNode.Children[newWord[currentIndex]], currentIndex + 1);
+                currentNode = Add(newWord, currentNode.Children[newWord[currentIndex]], currentIndex + 1);
             }
             else
             {
-                return Add(newWord, new TrieNode(newWord[currentIndex]), currentIndex + 1);
+                currentNode = Add(newWord, new TrieNode(newWord[currentIndex]), currentIndex + 1);
             }
         }
         
