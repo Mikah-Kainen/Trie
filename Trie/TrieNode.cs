@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Trie
 {
-    class TrieNode
+    public class TrieNode
     {
         public char value { get; private set; }
 
