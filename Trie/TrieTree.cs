@@ -16,26 +16,23 @@ namespace Trie
 
         public bool Add(string newWord)
         {
-            return Add(newWord, RootNode, 0);
+            TrieNode currentNode = RootNode;
+            foreach(char letter in newWord)
+            {
+                if(!currentNode.Children.ContainsKey(letter))
+                {
+                    currentNode.AddNewChild(letter);
+                }
+                currentNode = currentNode.Children[letter];
+            }
+            if (!currentNode.isEnd)
+            {
+                currentNode.isEnd = true;
+                return true;
+            }
+            return false;
         }
 
-        private bool Add(string newWord, TrieNode currentNode, int currentIndex)
-        {
-            if(currentIndex == newWord.Length)
-            {
-                bool returnValue = currentNode.isEnd;
-                currentNode.isEnd = true;
-                return returnValue;
-            }
-            else if(currentNode.Children != new Dictionary<char, TrieNode>() && currentNode.Children.ContainsKey(newWord[currentIndex]))
-            {
-                currentNode = Add(newWord, currentNode.Children[newWord[currentIndex]], currentIndex + 1);
-            }
-            else
-            {
-                currentNode = Add(newWord, new TrieNode(newWord[currentIndex]), currentIndex + 1);
-            }
-        }
         
 
     }
