@@ -13,7 +13,11 @@ namespace Trie
             tree.Add("jelly");
             tree.Add("hi");
             tree.Add("help");
-            tree.Add("hip");
+            bool result1 = tree.Add("hip");
+
+            bool result2 = tree.Remove("hi");
+            bool result3 = tree.Remove("bye");
+            bool result4 = tree.Add("hello");
 
         }
     }

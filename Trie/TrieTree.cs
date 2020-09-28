@@ -33,6 +33,23 @@ namespace Trie
             return false;
         }
 
+        public bool Remove(string targetWord)
+        {
+            TrieNode currentNode = RootNode;
+            foreach(char letter in targetWord)
+            {
+                if(currentNode.Children.ContainsKey(letter))
+                {
+                    currentNode = currentNode.Children[letter];
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            currentNode.isEnd = false;
+            return true;
+        }
         
 
     }
