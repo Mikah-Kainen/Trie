@@ -71,6 +71,10 @@ namespace Trie
         public List<string> FindMatchingPrefixes(string preSearched)
         {
             TrieNode currentNode = Search(preSearched);
+            if(currentNode == null)
+            {
+                return new List<string>();
+            }
             List<TrieNode> endingNodes = new List<TrieNode>();
             Dictionary<TrieNode, TrieNode> parentMap = new Dictionary<TrieNode, TrieNode>();
             Stack<TrieNode> stack = new Stack<TrieNode>();
